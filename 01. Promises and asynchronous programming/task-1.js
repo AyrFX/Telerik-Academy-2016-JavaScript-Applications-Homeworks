@@ -1,5 +1,5 @@
 (function () {
-    var output = document.querySelector('div');
+    var output = document.querySelector('#output');
     var promise = new Promise(function (resolve) {
         navigator.geolocation.getCurrentPosition(function (position) {
             resolve(position);
