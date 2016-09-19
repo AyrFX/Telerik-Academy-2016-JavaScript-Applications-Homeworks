@@ -31,7 +31,12 @@ var data = (function () {
     function threadsAdd(title) {
         var thread = {
             title: title,
-            creator: '',
+            id: NaN,
+            user: {
+                username: '',
+                id: 5
+            },
+            postDate: new Date(),
             messages: []
         };
 
@@ -50,14 +55,29 @@ var data = (function () {
 
     function threadById(id) {
         return new Promise((resolve, reject) => {
-            $.getJSON('api/threads/:' + id)
+            $.getJSON('api/threads/' + id)
                 .done(resolve)
                 .fail(reject);
         });
     }
 
     function threadsAddMessage(threadId, content) {
+        var message = {
+            username: '',
+            threadId: threadId,
+            content: content
+        };
 
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                    method: 'POST',
+                    url: 'api/threads/' + threadId + '/messages',
+                    contentType: 'application/json',
+                    data: JSON.stringify(message)
+                })
+                .done(resolve)
+                .fail(reject);
+        });
     }
     // end threads
 
