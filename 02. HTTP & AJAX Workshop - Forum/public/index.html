@@ -29,8 +29,8 @@
       </div>
       <nav class="navbar navbar-default navbar-collapse collapse">
         <ul id="main-nav" class="nav navbar-nav">
-          <li><a href="#" id="btn-threads">Threads</a></li>
-          <li><a href="#" id="btn-gallery">Gallery</a></li>
+          <li><a href="#/threads" id="btn-threads">Threads</a></li>
+          <li><a href="#/gallery" id="btn-gallery">Gallery</a></li>
         </ul>
         <ul class="nav nav navbar-nav navbar-right">
           <li><a href="#">Chat <span class="badge">42</span></a></li>
@@ -58,7 +58,7 @@
   </div>
 
   <!-- start templates -->
-  <script id="threads-container-template" type="text/template">
+  <!--<script id="threads-container-template" type="text/template">
     <div id="container-thraeds" class="col-xs-4">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -92,7 +92,7 @@
         </span>
       </div>
     </form>
-  </script>
+  </script>-->
 
   <script id="messages-container-template" type="text/template">
     <div class="container-messages col-xs-8">
@@ -139,7 +139,7 @@
     <div class="alert col-lg-6" style="position: absolute; top: 14%; left: 25%;"></div>
   </script>
 
-  <script id="gallery-container-tempalte" type="text/template">
+ <!-- <script id="gallery-container-tempalte" type="text/template">
     <div id="container-gallery" class="col-xs-12">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -156,13 +156,17 @@
       <img class="gallery-item-img" />
       <h4 class="gallery-item-title"></h4>
     </div>
-  </script>
+  </script>-->
   <!-- end templates -->
   <!-- libs -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
 
   <!-- app code -->
+  <script src="./bower_components/handlebars/handlebars.js" charset="utf-8"></script>
+  <script src="./scripts/templates-loader.js" charset="utf-8"></script>
+  <script src="./bower_components/navigo/lib/navigo.js"></script>
   <script src="./scripts/data.js"></script>
+  <script src="./scripts/router.js"></script>
   <script src="./scripts/main.js"></script>
 
 </body>

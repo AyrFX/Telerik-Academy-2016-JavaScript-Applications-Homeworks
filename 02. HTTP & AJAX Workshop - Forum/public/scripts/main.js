@@ -12,6 +12,8 @@ $(() => { // on document ready
         usernameInput = $('#login input'),
         alertTemplate = $($('#alert-template').text());
 
+    router.init();
+
     (function checkForLoggedUser() {
         data.users.current()
             .then((user) => {
@@ -118,12 +120,12 @@ $(() => { // on document ready
         $target.parents('li').addClass('active');
     });
 
-    navbar.on('click', '#btn-threads', (ev) => {
-        data.threads.get()
-            .then((data) => {
-                loadThreadsContent(data.result)
-            })
-    });
+    // navbar.on('click', '#btn-threads', (ev) => {
+    //     data.threads.get()
+    //         .then((data) => {
+    //             loadThreadsContent(data.result)
+    //         })
+    // });
 
     contentContainer.on('click', '#btn-add-thread', (ev) => {
         let title = $(ev.target).parents('form').find('input#input-add-thread').val() || null;
@@ -175,12 +177,12 @@ $(() => { // on document ready
     // end threads
 
     // start gallery
-    navbar.on('click', '#btn-gallery', (ev) => {
-            data.gallery.get()
-                .then(loadGalleryContent)
-                .catch(console.log)
-        })
-        // end gallery
+    // navbar.on('click', '#btn-gallery', (ev) => {
+    //         data.gallery.get()
+    //             .then(loadGalleryContent)
+    //             .catch(console.log)
+    //     })
+    // end gallery
 
     // start login/logout
     navbar.on('click', '#btn-login', (ev) => {
