@@ -12,6 +12,8 @@
   "dependencies": {
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
-    "navigo": "^2.3.4"
+    "navigo": "^2.3.4",
+    "systemjs": "^0.19.38",
+    "systemjs-plugin-babel": "0.0.15"
   }
 }

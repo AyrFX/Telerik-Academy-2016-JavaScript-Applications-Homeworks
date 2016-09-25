@@ -158,16 +158,25 @@
     </div>
   </script>-->
   <!-- end templates -->
+
   <!-- libs -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="./bower_components/handlebars/handlebars.js" charset="utf-8"></script>
+  <script src="./bower_components/navigo/lib/navigo.js"></script>
+  <script src="../bower_components/systemjs/dist/system.js"></script>
+  <script src="./scripts/system-config.js"></script>
+  <script>
+     System.import('main');
+     System.import('data');
+     System.import('router');
+     System.import('templatesLoader');
+  </script>
 
   <!-- app code -->
-  <script src="./bower_components/handlebars/handlebars.js" charset="utf-8"></script>
-  <script src="./scripts/templates-loader.js" charset="utf-8"></script>
-  <script src="./bower_components/navigo/lib/navigo.js"></script>
+  <!--<script src="./scripts/templates-loader.js" charset="utf-8"></script>
   <script src="./scripts/data.js"></script>
   <script src="./scripts/router.js"></script>
-  <script src="./scripts/main.js"></script>
+  <script src="./scripts/main.js"></script>-->
 
 </body>
 </html>

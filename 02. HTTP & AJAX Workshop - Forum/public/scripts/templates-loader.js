@@ -13,17 +13,6 @@ function templateLoader(templateName) {
     });
 }
 
-/*function templatesGenerator(templateName, data) {
-            var outerData = data;
-            var source = $.ajax({
-                    method: 'GET',
-                    url: './scripts/templates/' + templateName + '.handlebars',
-                    contentType: 'text/html'
-                })
-                .done(function (data) {
-                    var template = Handlebars.compile(data);
-                    $('#content').append(template);
-                })
-                .fail();
-        }
-*/
+export {
+    templateLoader
+};

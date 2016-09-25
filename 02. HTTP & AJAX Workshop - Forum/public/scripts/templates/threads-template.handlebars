@@ -14,8 +14,8 @@
                     {{else}}
                         <span>Created on </span><span class="thread-date">unknown</span>
                     {{/if}}
-                    {{#if username}}
-                        by <a class="thread-creator" href="#">{{username}}</a>
+                    {{#if user}}
+                        by <a class="thread-creator" href="#">{{user.username}}</a>
                     {{else}}
                         by <a class="thread-creator" href="#">anonimous</a>
                     {{/if}}

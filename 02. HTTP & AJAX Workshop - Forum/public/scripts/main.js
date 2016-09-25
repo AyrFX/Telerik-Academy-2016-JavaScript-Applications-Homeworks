@@ -1,3 +1,12 @@
+import {
+    router
+}
+from '/scripts/router.js';
+import {
+    data
+}
+from '/scripts/data.js';
+
 ﻿
 $(() => { // on document ready
     const GLYPH_UP = 'glyphicon-chevron-up',
@@ -137,14 +146,14 @@ $(() => { // on document ready
             .catch((err) => showMsg(JSON.parse(err.responseText).err, 'Error', 'alert-danger'));
     })
 
-    contentContainer.on('click', 'a.thread-title', (ev) => {
+    /*contentContainer.on('click', 'a.thread-title', (ev) => {
         let $target = $(ev.target),
             threadId = $target.parents('.thread').attr('data-id');
 
         data.threads.getById(threadId)
             .then(loadMessagesContent)
             .catch((err) => showMsg(err, 'Error', 'alert-danger'))
-    })
+    })*/
 
     contentContainer.on('click', '.btn-add-message', (ev) => {
         let $target = $(ev.target),
@@ -152,12 +161,14 @@ $(() => { // on document ready
             thId = $container.attr('data-thread-id'),
             msg = $container.find('.input-add-message').val();
 
-        data.threads.addMessage(thId, msg)
+        data.threads.addMessage(thId, msg);
+
+        /*data.threads.addMessage(thId, msg)
             .then(function () {
                 $(`div[data-id ="${thId}"] > div > h3 > a`).trigger('click');
             })
             .then(showMsg('Successfuly added the new mssagee', 'Success', 'alert-success'))
-            .catch((err) => showMsg(JSON.parse(err.responseText).err, 'Error', 'alert-danger'));
+            .catch((err) => showMsg(JSON.parse(err.responseText).err, 'Error', 'alert-danger'));*/
     })
 
     contentContainer.on('click', '.btn-close-msg', (ev) => {

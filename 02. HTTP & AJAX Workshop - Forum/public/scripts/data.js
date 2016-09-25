@@ -23,34 +23,35 @@ var data = (function () {
     function threadsGet() {
         return new Promise((resolve, reject) => {
             $.getJSON('api/threads')
-                .done(resolve)
+                .done(data => {
+                    //console.log(data);
+                    resolve(data)
+                })
                 .fail(reject);
         });
     }
 
     function threadsAdd(title) {
-        var thread = {
-            title: title,
-            id: NaN,
-            user: {
-                username: '',
-                id: 5
-            },
-            postDate: new Date(),
-            messages: []
-        };
-
         return new Promise((resolve, reject) => {
-            $.ajax({
-                    method: 'POST',
-                    url: 'api/threads',
-                    contentType: 'application/json',
-                    data: JSON.stringify(thread)
-                })
-                .done(resolve)
-                .fail(reject);
-        });
+            let username = userGetCurrent()
+                .then((username) => {
+                    //console.log(username);
+                    let body = {
+                        title, username
+                    };
 
+                    $.ajax({
+                            type: 'POST',
+                            url: 'api/threads',
+                            data: JSON.stringify(body),
+                            contentType: 'application/json'
+                        }).done(data => {
+                            //console.log(data);
+                            resolve(data)
+                        })
+                        .fail(err => reject(err));
+                });
+        });
     }
 
     function threadById(id) {
@@ -62,22 +63,23 @@ var data = (function () {
     }
 
     function threadsAddMessage(threadId, content) {
-        var message = {
-            username: '',
-            threadId: threadId,
-            content: content
-        };
+        userGetCurrent()
+            .then(function (username) {
+                let message = {
+                    username: username,
+                    content: content
+                };
+                console.log(username);
+                $.ajax({
+                        method: 'POST',
+                        url: 'api/threads/' + threadId + '/messages',
+                        contentType: 'application/json',
+                        data: JSON.stringify(message)
+                    })
+                    .done(data => resolve(data))
+                    .fail(err => reject(err));
+            });
 
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                    method: 'POST',
-                    url: 'api/threads/' + threadId + '/messages',
-                    contentType: 'application/json',
-                    data: JSON.stringify(message)
-                })
-                .done(resolve)
-                .fail(reject);
-        });
     }
     // end threads
 
@@ -109,3 +111,7 @@ var data = (function () {
         }
     };
 })();
+
+export {
+    data
+};
