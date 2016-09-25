@@ -33,17 +33,17 @@ var data = (function () {
 
     function threadsAdd(title) {
         return new Promise((resolve, reject) => {
-            let username = userGetCurrent()
-                .then((username) => {
+            userGetCurrent()
+                .then(function (username) {
                     //console.log(username);
-                    let body = {
+                    let thread = {
                         title, username
                     };
 
                     $.ajax({
                             type: 'POST',
                             url: 'api/threads',
-                            data: JSON.stringify(body),
+                            data: JSON.stringify(thread),
                             contentType: 'application/json'
                         }).done(data => {
                             //console.log(data);
@@ -69,15 +69,15 @@ var data = (function () {
                     username: username,
                     content: content
                 };
-                console.log(username);
+                //console.log(username);
                 $.ajax({
                         method: 'POST',
                         url: 'api/threads/' + threadId + '/messages',
                         contentType: 'application/json',
                         data: JSON.stringify(message)
                     })
-                    .done(data => resolve(data))
-                    .fail(err => reject(err));
+                    .done()
+                    .fail();
             });
 
     }

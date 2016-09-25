@@ -162,6 +162,7 @@ $(() => { // on document ready
             msg = $container.find('.input-add-message').val();
 
         data.threads.addMessage(thId, msg);
+        router.redirect('#/threads/' + thId);
 
         /*data.threads.addMessage(thId, msg)
             .then(function () {
