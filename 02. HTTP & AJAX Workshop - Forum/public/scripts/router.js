@@ -24,6 +24,7 @@ let router = (function () {
                         .then(([data, template]) => {
                             let html = template(data);
                             $('#content').html(html);
+                            //$('#messages').html('');
                         })
                         .catch(console.log);
                 },
@@ -40,9 +41,8 @@ let router = (function () {
                 '/gallery': function () {
                     Promise.all([data.gallery.get(), templateLoader('gallery-template')])
                         .then(([data, template]) => {
-                            // let html = template(data);
-                            // $('#content').html(html);
-                            $('#messages').html(html);
+                            let html = template(data);
+                            $('#content').html(html);
                         })
                         .catch(console.log)
                 }
